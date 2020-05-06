@@ -1,0 +1,10 @@
+.content {
+  background-color: burlywood;
+}
+.item {
+  color: rgb(229, 253, 89);
+}
+.item img {
+  width: 50px;
+  border-radius: 50px;
+}
