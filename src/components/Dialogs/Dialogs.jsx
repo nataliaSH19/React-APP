@@ -3,7 +3,7 @@ import s from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import { updateNewMessageTextCreator, sendMessageCreator } from "../../Redux/State";
+import { updateNewMessageTextCreator, sendMessageCreator } from "../../Redux/dialogs-reducer";
 
 
 const MessagePlus = () => {
