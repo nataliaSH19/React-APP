@@ -1,37 +1,28 @@
 import React from "react";
 import Dialogs from "./Dialogs";
 import { updateNewMessageTextCreator, sendMessageCreator } from "../../Redux/dialogs-reducer";
+import { connect } from "react-redux";
 
 
-const MessagePlus = () => {
-    let newMessage = React.createRef();
-    let addMessage = () => {
-        let mes = newMessage.current.value;
-        alert(mes);
+
+let mapStateToProps = (state) => {
+    return {
+        dialogsPage: state.dialogsPage
+
     }
-    return (
-        <div> <textarea ref={newMessage}></textarea>
-            <button onClick={addMessage}>Add message</button>
-        </div>
-    )
 }
+let mapDispatchToProps = (dispatch) => {
+    return {
+        updateNewMessageTextCreator: (body) => {
+            dispatch(updateNewMessageTextCreator(body));
+        },
+        sendMessage: () => {
+            dispatch(sendMessageCreator());
+        }
 
-
-
-const DialogsContainer = (props) => {
-    let state = props.store.getState().dialogsPage;
-
-    let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
     }
-    let onNewMessageChange = (body) => {
-        props.store.dispatch(updateNewMessageTextCreator(body));
-    }
-    return (
-        <Dialogs updateNewMessageTextCreator={onNewMessageChange}
-            sendMessage={onSendMessageClick}
-            dialogsPage={state} />
-    );
-};
+
+}
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
